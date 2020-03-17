@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import web.model.Car;
 import web.service.CarService;
 import web.service.CarServiceImp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,31 +19,17 @@ public class CarController {
     private CarService service = new CarServiceImp();
 
     @Autowired
-    public void setService(CarService carService){
+    public void setService(CarService carService) {
         this.service = carService;
     }
 
-    //    @RequestMapping(value = "/car", method = RequestMethod.GET)
-//    public ModelAndView printCar() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        CarService service = new CarServiceImp();
-//        modelAndView.setViewName("car");
-//        modelAndView.addObject("cars",service.getCars());
-//        return modelAndView;
-//    }
-    @RequestMapping(value = "/car", method = RequestMethod.GET)
+    @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public List<Car> printCarTable(ModelMap model) {
         List<Car> cars = service.getCars();
         model.addAttribute("cars", cars);
         return cars;
     }
-//    @RequestMapping(method = RequestMethod.GET)
-//    public ModelAndView allFilms() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("films");
-//        modelAndView.addObject("filmList", filmService.allFilms());
-//        return modelAndView;
-//    }
+
 //    Задание:
 //1. Создайте еще один контроллер, замаппленный на /cars.
 //2. Создайте модель Car с тремя произвольными полями.

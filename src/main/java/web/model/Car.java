@@ -1,18 +1,19 @@
 package web.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name ="car" )
 public class Car {
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private int id;
+    @Column(name = "brand")
     private String brand;
+    @Column(name = "model")
     private String model;
+    @Column(name = "price")
     private int price;
 
     public Car() {
